@@ -160,6 +160,103 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-浅谈PHP的Session机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/17/浅谈PHP的Session机制/">浅谈PHP的Session原理和使用</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/17/浅谈PHP的Session机制/" class="archive-article-date">
+  	<time datetime="2018-07-17T06:57:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近因为在做登录模块，所以就想写一篇关于Session工作原理的文章。本篇文章结合自己的实践理解以及网上资料的整合。</p>
+<h2 id="什么是Session"><a href="#什么是Session" class="headerlink" title="什么是Session"></a>什么是Session</h2><p>Session翻译为“会话”的意思，其本意指的是有始有终的一系列动作／消息，如打电话从拿起电话拨号到挂断电话这一系列过程可以称为一个Session。</p>
+<p>在计算机专业术语中，Session是指一个终端用户与交互系统进行通信的时间间隔，通常是指从注册进入系统到注销退出系统所经过的时间。因此，Session实际上是一个特定的时间概念。</p>
+<h2 id="PHP-Session工作原理"><a href="#PHP-Session工作原理" class="headerlink" title="PHP Session工作原理"></a>PHP Session工作原理</h2><ol>
+<li>客户端请求一个php的服务地址。</li>
+<li>服务端收到请求，此次php脚本中包含<code>session_start()</code>。</li>
+<li>服务端会生成一个<code>PHPSESSID</code>。（默认session存储方式为<code>session.save_handle=files</code>，文件形式存储。生成的session文件名规则即为<code>sess_PHPSESSID</code>，session文件存在<code>session.save_path</code>中。）</li>
+<li>服务端响应首部<code>Response Headers:Set-Cookie:PHPSESSID=37vjjasgjdv2ouk1uomhgqkv50;path=/</code>，在客户端生成一个cookie保存此<code>PHPSESSID</code>。</li>
+<li>此时，客户端的cookie里面包含了<code>PHPSESSID</code>，之后客户端的每次请求首部<code>Request Headers:Cookie:PHPSESSID=37vjjasgjdv2ouk1uomhgqkv50</code>。服务端之后每次接收到客户端的请求就都能根据这个<code>PHPSESSID</code>，来找到服务端的session文件，通过对这个session文件的读写操作实现了session的超全局变量属性。</li>
+</ol>
+<h2 id="写入Session"><a href="#写入Session" class="headerlink" title="写入Session"></a>写入Session</h2><p>在脚本结束时会执行Session写入操作，把<code>$_SESSION</code>中的值写入到<code>session_id</code>命名的文件夹中，可能已经存在，可能需要创建新的文件。</p>
+<h2 id="销毁Session"><a href="#销毁Session" class="headerlink" title="销毁Session"></a>销毁Session</h2><p>php的session有效期默认是1440秒(24分钟)，如果客户端超过24分钟没有刷新，当前session会被回收，失效。Session发出去的Cookie一般是属于即时Cookie，保存在内存中，当浏览器关闭后，Session过期。如果需要强制过期，比如退出登录，那么需要在代码里销毁Session。</p>
+<ol>
+<li><code>setCookie(session_name(),session_id(),time()-8000000);</code>，退出登录前执行。</li>
+<li><code>unset();</code>，删除所有的<code>$_SESSION</code>数据，刷新后，有Cookie传过来，但没有数据。</li>
+<li><code>session_destroy();</code>，删除更彻底，删除<code>$_SESSION</code>，删除session文件和<code>seeson_id</code>。<br>当不关闭浏览器的情况下，再次刷新，2和3都会有COOKIE传过来，但是找不到数据。</li>
+</ol>
+<h2 id="客户端禁用cookie"><a href="#客户端禁用cookie" class="headerlink" title="客户端禁用cookie"></a>客户端禁用cookie</h2><p>如果客户端禁用了cookie，由于无法使用cookie传递<code>PHPSESSID</code>（基于cookie传输<code>PHPSESSID</code>的描述），那么客户端每次请求，服务端都会重新建立一个session文件，而无法通过<code>PHPSESSID</code>来重用session文件，所以session也就失效了。</p>
+<p>客户端禁用cookie后，session依然是可以用的，可以通过其它方式传递<code>PHPSESSID</code>。</p>
+<ol>
+<li>设置<code>php.ini</code>的<code>session.use_trans_sid = 1</code>或者打开<code>enable-trans-sid</code>选项，让PHP自动跨页传递<code>session_id()</code>。</li>
+<li>手动通过URL传值、隐藏表单传递<code>session_id()</code>。</li>
+<li>用文件、数据库形式保存<code>seesion_id()</code>，在跨页过程中手动调用。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/17/浅谈PHP的Session机制/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -322,6 +419,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
