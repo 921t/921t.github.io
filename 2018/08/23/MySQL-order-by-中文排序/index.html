@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Archives | 921t的博客</title>
+  <title>MySQL order by 中文排序 | 921t的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="php开发人员。">
-<meta name="keywords" content="js,jquery,javascript,开发者,程序猿,编程,代码,开源,IT网站,Developer,Programmer,Coder,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="921t的博客">
-<meta property="og:url" content="//litten.me/archives/index.html">
+  <meta name="description" content="前言今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。 CONVERT函数数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。 CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：CONVERT(xxx USI">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL order by 中文排序">
+<meta property="og:url" content="//litten.me/2018/08/23/MySQL-order-by-中文排序/index.html">
 <meta property="og:site_name" content="921t的博客">
-<meta property="og:description" content="php开发人员。">
+<meta property="og:description" content="前言今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。 CONVERT函数数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。 CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：CONVERT(xxx USI">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-23T14:50:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="921t的博客">
-<meta name="twitter:description" content="php开发人员。">
+<meta name="twitter:title" content="MySQL order by 中文排序">
+<meta name="twitter:description" content="前言今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。 CONVERT函数数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。 CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：CONVERT(xxx USI">
   
     <link rel="alternative" href="/atom.xml" title="921t的博客" type="application/atom+xml">
   
@@ -158,36 +159,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MySQL-order-by-中文排序" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/23/MySQL-order-by-中文排序/" class="archive-article-date">
-  	<time datetime="2018-08-23T13:31:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/23/MySQL-order-by-中文排序/">MySQL order by 中文排序</a>
+    <h1 class="article-title" itemprop="name">
+      MySQL order by 中文排序
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/08/23/MySQL-order-by-中文排序/" class="archive-article-date">
+  	<time datetime="2018-08-23T13:31:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。</p>
+<h2 id="CONVERT函数"><a href="#CONVERT函数" class="headerlink" title="CONVERT函数"></a>CONVERT函数</h2><p>数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。</p>
+<p><code>CONVERT()</code>函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：<code>CONVERT(xxx USING gbk)</code>。</p>
+<h2 id="order-by-排序"><a href="#order-by-排序" class="headerlink" title="order by 排序"></a>order by 排序</h2><p>有了CONVERT函数，那么中文排序就简单了。如字段名name排序，</p>
+<p>正序：<br><code>order by CONVERT(name USING gbk) asc;</code></p>
+<p>倒序：<br><code>order by CONVERT(name USING gbk) desc;</code></p>
+<p>数据中多条记录，首字符有数字或英文或中文的话，先对数字排序，再英文排序，再对中文进行排序。<br><br>如name有以下数据：1test,数据a1,test1,2test,test2,哈哈,数据a2,数据2</p>
+<p>升序：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>test</span><br><span class="line"><span class="number">2</span>test</span><br><span class="line">test1</span><br><span class="line">test2</span><br><span class="line">哈哈</span><br><span class="line">数据<span class="number">2</span></span><br><span class="line">数据a1</span><br><span class="line">数据a2</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,84 +227,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://litten.me/2018/08/23/MySQL-order-by-中文排序/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/17/浅谈PHP的Session机制/" class="archive-article-date">
-  	<time datetime="2018-07-17T06:57:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/17/浅谈PHP的Session机制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浅谈PHP的Session原理和使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/17/浅谈PHP的Session机制/">浅谈PHP的Session原理和使用</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/08/hello-world/" class="archive-article-date">
-  	<time datetime="2018-05-08T07:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/08/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -299,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
