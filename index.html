@@ -160,6 +160,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL-left-join中where和on条件的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/30/MySQL-left-join中where和on条件的区别/">MySQL left join中where和on条件的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/30/MySQL-left-join中where和on条件的区别/" class="archive-article-date">
+  	<time datetime="2018-08-30T08:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h2><p>1.多表<code>left join</code>会生成一张临时表，并返回给用户。</p>
+<p>2.<code>where</code>条件是针对最后生成的这张临时表进行过滤，过滤掉不符合<code>where</code>条件的记录，是真正的不符合就过滤掉。</p>
+<p>3.<code>on</code>条件是对<code>left join</code>的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为<code>NUll</code>。</p>
+<p>4.<code>on</code>条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说<code>on</code>中左表的限制条件只影响右表的匹配内容，不影响返回行数。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.<code>where</code>条件中对左表限制，不能放到<code>on</code>后面。<br>2.<code>where</code>条件中对右表限制，放到<code>on</code>后面，会有数据行数差异，比原来的行数要多。<br>3.<code>left join</code>生成的是一张临时表，根据需求使用where和on条件的过滤。</p>
+<p>参考文献：<a href="https://www.cnblogs.com/cuisi/p/7685893.html" target="_blank" rel="noopener">https://www.cnblogs.com/cuisi/p/7685893.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/30/MySQL-left-join中where和on条件的区别/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL-order-by-中文排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
