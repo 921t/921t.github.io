@@ -61,7 +61,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -83,7 +83,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/song921t" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="mail" target="_blank" href="/song921t@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -120,7 +122,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/song921t" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="mail" target="_blank" href="/song921t@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -131,7 +135,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -171,10 +175,8 @@
         <h2 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h2><p>1.多表<code>left join</code>会生成一张临时表，并返回给用户。</p>
 <p>2.<code>where</code>条件是针对最后生成的这张临时表进行过滤，过滤掉不符合<code>where</code>条件的记录，是真正的不符合就过滤掉。</p>
 <p>3.<code>on</code>条件是对<code>left join</code>的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为<code>NUll</code>。</p>
-<p>4.<code>on</code>条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说<code>on</code>中左表的限制条件只影响右表的匹配内容，不影响返回行数。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.<code>where</code>条件中对左表限制，不能放到<code>on</code>后面。<br>2.<code>where</code>条件中对右表限制，放到<code>on</code>后面，会有数据行数差异，比原来的行数要多。<br>3.<code>left join</code>生成的是一张临时表，根据需求使用where和on条件的过滤。</p>
-<p>参考文献：<a href="https://www.cnblogs.com/cuisi/p/7685893.html" target="_blank" rel="noopener">https://www.cnblogs.com/cuisi/p/7685893.html</a></p>
-
+<p>4.<code>on</code>条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说<code>on</code>中左表的限制条件只影响右表的匹配内容，不影响返回行数。<br>
+        
       
 
       
@@ -249,13 +251,8 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。</p>
 <h2 id="CONVERT函数"><a href="#CONVERT函数" class="headerlink" title="CONVERT函数"></a>CONVERT函数</h2><p>数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。</p>
-<p><code>CONVERT()</code>函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：<code>CONVERT(xxx USING gbk)</code>。</p>
-<h2 id="order-by-排序"><a href="#order-by-排序" class="headerlink" title="order by 排序"></a>order by 排序</h2><p>有了CONVERT函数，那么中文排序就简单了。如字段名name排序，</p>
-<p>正序：<br><code>order by CONVERT(name USING gbk) asc;</code></p>
-<p>倒序：<br><code>order by CONVERT(name USING gbk) desc;</code></p>
-<p>数据中多条记录，首字符有数字或英文或中文的话，先对数字排序，再英文排序，再对中文进行排序。<br><br>如name有以下数据：1test,数据a1,test1,2test,test2,哈哈,数据a2,数据2</p>
-<p>升序：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>test</span><br><span class="line"><span class="number">2</span>test</span><br><span class="line">test1</span><br><span class="line">test2</span><br><span class="line">哈哈</span><br><span class="line">数据<span class="number">2</span></span><br><span class="line">数据a1</span><br><span class="line">数据a2</span><br></pre></td></tr></table></figure></p>
-
+<p><code>CONVERT()</code>函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：<code>CONVERT(xxx USING gbk)</code>。<br>
+        
       
 
       
@@ -406,14 +403,8 @@
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a><br>
+        
       
 
       

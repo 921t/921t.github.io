@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="921t的博客">
 <meta property="og:description" content="前言今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。 CONVERT函数数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。 CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：CONVERT(xxx USI">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-23T14:50:41.000Z">
+<meta property="og:updated_time" content="2018-09-05T01:33:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL order by 中文排序">
 <meta name="twitter:description" content="前言今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。 CONVERT函数数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。 CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：CONVERT(xxx USI">
@@ -62,7 +62,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -84,7 +84,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/song921t" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="mail" target="_blank" href="/song921t@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -121,7 +123,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/song921t" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="mail" target="_blank" href="/song921t@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -132,7 +136,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -169,7 +173,7 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。</p>
 <h2 id="CONVERT函数"><a href="#CONVERT函数" class="headerlink" title="CONVERT函数"></a>CONVERT函数</h2><p>数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。</p>
-<p><code>CONVERT()</code>函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：<code>CONVERT(xxx USING gbk)</code>。</p>
+<p><code>CONVERT()</code>函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：<code>CONVERT(xxx USING gbk)</code>。<br><a id="more"></a></p>
 <h2 id="order-by-排序"><a href="#order-by-排序" class="headerlink" title="order by 排序"></a>order by 排序</h2><p>有了CONVERT函数，那么中文排序就简单了。如字段名name排序，</p>
 <p>正序：<br><code>order by CONVERT(name USING gbk) asc;</code></p>
 <p>倒序：<br><code>order by CONVERT(name USING gbk) desc;</code></p>
