@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="921t的博客">
 <meta property="og:description" content="前言最近因为在做登录模块，所以就想写一篇关于Session工作原理的文章。本篇文章结合自己的实践理解以及网上资料的整合。 什么是SessionSession翻译为“会话”的意思，其本意指的是有始有终的一系列动作／消息，如打电话从拿起电话拨号到挂断电话这一系列过程可以称为一个Session。 在计算机专业术语中，Session是指一个终端用户与交互系统进行通信的时间间隔，通常是指从注册进入系统到注销">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-17T09:42:28.000Z">
+<meta property="og:updated_time" content="2018-09-05T01:15:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈PHP的Session原理和使用">
 <meta name="twitter:description" content="前言最近因为在做登录模块，所以就想写一篇关于Session工作原理的文章。本篇文章结合自己的实践理解以及网上资料的整合。 什么是SessionSession翻译为“会话”的意思，其本意指的是有始有终的一系列动作／消息，如打电话从拿起电话拨号到挂断电话这一系列过程可以称为一个Session。 在计算机专业术语中，Session是指一个终端用户与交互系统进行通信的时间间隔，通常是指从注册进入系统到注销">
@@ -181,7 +181,7 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近因为在做登录模块，所以就想写一篇关于Session工作原理的文章。本篇文章结合自己的实践理解以及网上资料的整合。</p>
 <h2 id="什么是Session"><a href="#什么是Session" class="headerlink" title="什么是Session"></a>什么是Session</h2><p>Session翻译为“会话”的意思，其本意指的是有始有终的一系列动作／消息，如打电话从拿起电话拨号到挂断电话这一系列过程可以称为一个Session。</p>
-<p>在计算机专业术语中，Session是指一个终端用户与交互系统进行通信的时间间隔，通常是指从注册进入系统到注销退出系统所经过的时间。因此，Session实际上是一个特定的时间概念。</p>
+<p>在计算机专业术语中，Session是指一个终端用户与交互系统进行通信的时间间隔，通常是指从注册进入系统到注销退出系统所经过的时间。因此，Session实际上是一个特定的时间概念。<br><a id="more"></a></p>
 <h2 id="PHP-Session工作原理"><a href="#PHP-Session工作原理" class="headerlink" title="PHP Session工作原理"></a>PHP Session工作原理</h2><ol>
 <li>客户端请求一个php的服务地址。</li>
 <li>服务端收到请求，此次php脚本中包含<code>session_start()</code>。</li>
