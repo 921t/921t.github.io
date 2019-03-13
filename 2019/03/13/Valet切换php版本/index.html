@@ -6,19 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Archives: 2018/8 | 921t的博客</title>
+  <title>Valet切换php版本 | 921t的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="php开发人员。">
-<meta name="keywords" content="php,js,jquery,javascript,开发者,程序猿,编程,代码,开源,IT网站,Developer,Programmer,Coder,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="921t的博客">
-<meta property="og:url" content="//litten.me/archives/2018/08/index.html">
+  <meta name="description" content="本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。">
+<meta name="keywords" content="Valet PHP Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Valet切换php版本">
+<meta property="og:url" content="//litten.me/2019/03/13/Valet切换php版本/index.html">
 <meta property="og:site_name" content="921t的博客">
-<meta property="og:description" content="php开发人员。">
+<meta property="og:description" content="本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="//litten.me/images/php0.png">
+<meta property="og:image" content="//litten.me/images/php1.png">
+<meta property="og:image" content="//litten.me/images/php2.png">
+<meta property="og:updated_time" content="2019-03-13T13:10:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="921t的博客">
-<meta name="twitter:description" content="php开发人员。">
+<meta name="twitter:title" content="Valet切换php版本">
+<meta name="twitter:description" content="本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。">
+<meta name="twitter:image" content="//litten.me/images/php0.png">
   
     <link rel="alternative" href="/atom.xml" title="921t的博客" type="application/atom+xml">
   
@@ -148,98 +153,182 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Valet切换php版本" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/30/MySQL-left-join中where和on条件的区别/" class="archive-article-date">
-  	<time datetime="2018-08-30T08:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/30/MySQL-left-join中where和on条件的区别/">MySQL left join中where和on条件的区别</a>
+    <h1 class="article-title" itemprop="name">
+      Valet切换php版本
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/03/13/Valet切换php版本/" class="archive-article-date">
+  	<time datetime="2019-03-13T11:47:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>本地开发环境为 <code>Valet</code>，<code>PHP</code> 版本是 7.1。最近有个项目需要使用 <code>PHP 5</code> 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。<br><a id="more"></a></p>
+<h2 id="安装-PHP-5-6"><a href="#安装-PHP-5-6" class="headerlink" title="安装 PHP 5.6"></a>安装 PHP 5.6</h2><p>我们使用 <code>brew</code> 来安装，因为 <code>brew</code> 已经不支持 <code>PHP 5.6</code>，所以在安装 <code>PHP 5.6</code> 前要添加此 <code>Tap</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew tap exolnet/homebrew-deprecated</span></span><br></pre></td></tr></table></figure>
+<p>然后选择我们需要安装的版本。</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>brew install php<span class="variable">@5</span>.<span class="number">6</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装-Redis-扩展"><a href="#安装-Redis-扩展" class="headerlink" title="安装 Redis 扩展"></a>安装 <code>Redis</code> 扩展</h2><p>项目需要使用 <code>Redis</code>，我们顺便安装 <code>Redis</code> 扩展。因为 <code>brew</code> 已经不支持 <code>Redis</code> 扩展，在此我们使用 <code>pecl</code> 命令进行安装。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pecl install redis</span></span><br></pre></td></tr></table></figure>
+<p>安装成功后的 <code>.so</code> 文件存在 <code>/usr/local/Cellar/php@5.6/5.6.40/pecl/20131226/redis.so</code>。</p>
+<p>因为 <code>PHP</code> 的更新，这个路径可能发生变化，所以建议换一个位置存放这个文件，如 <code>/usr/local/lib/php</code> 路径，在目录内新建 <code>extensions</code> 目录「取任意名，<code>ext</code> 或 <code>extensions</code> 都可以」。</p>
+<p>将 <code>/usr/local/Cellar/php@5.6/5.6.40/pecl/20131226/</code> 内的 <code>so</code> 文件复制到 <code>/usr/local/lib/php/extensions</code> 目录。</p>
+<p>最后进入 <code>/usr/local/etc/php/5.6/conf.d</code> 目录，新建配置文件，如新建文件 <code>exts.ini</code>：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Redis]</span></span><br><span class="line"><span class="attr">extension</span>=<span class="string">"/usr/local/lib/php/extensions/redis.so"</span></span><br></pre></td></tr></table></figure>
+<p>OK，<code>brew services restart php@5.6</code> 重启 <code>PHP</code> 生效。</p>
+<h4 id="小插曲"><a href="#小插曲" class="headerlink" title="小插曲"></a>小插曲</h4><p>本以上述步骤执行后，安装工作已结束。但是此时 <code>PHP</code> 发生了警告：</p>
+<p><img src="/images/php0.png" alt="avatar"></p>
+<p>执行 <code>php --ini</code> 进行查看：</p>
+<p><img src="/images/php1.png" alt="avatar"></p>
+<p>可以看到提示信息，因为 <code>php.ini</code> 文件内已经加载了 <code>redis.so</code>，所以不会再加载 <code>/usr/local/etc/php/5.6/conf.d/exts.ini</code> 内的 <code>redis.so</code>，注释掉 <code>php.ini</code> 内的 <code>redis.so</code> 即可。</p>
+<p>修改 <code>php.ini</code> 文件：</p>
+<p><img src="/images/php2.png" alt="avatar"></p>
+<p>在 <code>extensions=&quot;redis.so&quot;</code> 前加上 「;」，即注释。</p>
+<p>现在一切准备就绪，接下来让我们切换php版本。</p>
+<h2 id="切换版本"><a href="#切换版本" class="headerlink" title="切换版本"></a>切换版本</h2><p><code>php 7.1</code> 切换到 <code>php 5.6</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> valet stop</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew services start php@5.6</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew services stop php@7.1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew unlink php@7.1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew link --force php@5.6</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> valet restart</span></span><br></pre></td></tr></table></figure>
+<p>上述步骤执行后，报如下错：</p>
+<p><code>Parse error: syntax error, unexpected &#39;-&gt;&#39; (T_OBJECT_OPERATOR) in /Users/xutao/.composer/vendor/illuminate/support/Collection.php on line 181</code></p>
+<p>在 <code>~/.composer</code> 目录下，执行 <code>composer update</code> 即可解决。</p>
+<p>运行项目，出现 <code>nginx  502 Bad Gateway</code> 错误，执行 <code>valet install</code>，解决。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://getgrav.org/blog/macos-mojave-apache-multiple-php-versions" target="_blank" rel="noopener">https://getgrav.org/blog/macos-mojave-apache-multiple-php-versions</a></li>
+<li><a href="https://blog.csdn.net/maxsky/article/details/80280404" target="_blank" rel="noopener">https://blog.csdn.net/maxsky/article/details/80280404</a></li>
+<li><a href="https://stackoverflow.com/questions/32764981/php-warning-module-already-loaded-in-unknown-on-line-0" target="_blank" rel="noopener">https://stackoverflow.com/questions/32764981/php-warning-module-already-loaded-in-unknown-on-line-0</a></li>
+<li><a href="https://www.jianshu.com/p/54176a6f24c1" target="_blank" rel="noopener">https://www.jianshu.com/p/54176a6f24c1</a></li>
+<li><a href="https://github.com/laravel/valet/pull/535#issue-174177804" target="_blank" rel="noopener">https://github.com/laravel/valet/pull/535#issue-174177804</a></li>
+<li><a href="https://github.com/laravel/valet/issues/269#issuecomment-267761780" target="_blank" rel="noopener">https://github.com/laravel/valet/issues/269#issuecomment-267761780</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Valet PHP Redis</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://litten.me/2019/03/13/Valet切换php版本/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/23/MySQL-order-by-中文排序/" class="archive-article-date">
-  	<time datetime="2018-08-23T13:31:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/03/phpstorm去除原生SQL的黄色波浪线并增加提示/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">phpstorm去除原生SQL的黄色波浪线并增加提示</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/23/MySQL-order-by-中文排序/">MySQL order by 中文排序</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -262,8 +351,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
