@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="//litten.me">
   <title>MySQL left join中where和on条件的区别 | 921t的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="相关知识1.多表left join会生成一张临时表，并返回给用户。 2.where条件是针对最后生成的这张临时表进行过滤，过滤掉不符合where条件的记录，是真正的不符合就过滤掉。 3.on条件是对left join的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为NUll。 4.on条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说on中">
+  <meta name="description" content="1.多表left join会生成一张临时表，并返回给用户。 2.where条件是针对最后生成的这张临时表进行过滤，过滤掉不符合where条件的记录，是真正的不符合就过滤掉。 3.on条件是对left join的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为NUll。 4.on条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说on中左表的">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL left join中where和on条件的区别">
 <meta property="og:url" content="//litten.me/2018/08/30/MySQL-left-join中where和on条件的区别/index.html">
 <meta property="og:site_name" content="921t的博客">
-<meta property="og:description" content="相关知识1.多表left join会生成一张临时表，并返回给用户。 2.where条件是针对最后生成的这张临时表进行过滤，过滤掉不符合where条件的记录，是真正的不符合就过滤掉。 3.on条件是对left join的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为NUll。 4.on条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说on中">
+<meta property="og:description" content="1.多表left join会生成一张临时表，并返回给用户。 2.where条件是针对最后生成的这张临时表进行过滤，过滤掉不符合where条件的记录，是真正的不符合就过滤掉。 3.on条件是对left join的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为NUll。 4.on条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说on中左表的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-05T01:33:19.000Z">
+<meta property="og:updated_time" content="2019-03-13T11:39:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL left join中where和on条件的区别">
-<meta name="twitter:description" content="相关知识1.多表left join会生成一张临时表，并返回给用户。 2.where条件是针对最后生成的这张临时表进行过滤，过滤掉不符合where条件的记录，是真正的不符合就过滤掉。 3.on条件是对left join的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为NUll。 4.on条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说on中">
+<meta name="twitter:description" content="1.多表left join会生成一张临时表，并返回给用户。 2.where条件是针对最后生成的这张临时表进行过滤，过滤掉不符合where条件的记录，是真正的不符合就过滤掉。 3.on条件是对left join的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为NUll。 4.on条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说on中左表的">
   
     <link rel="alternative" href="/atom.xml" title="921t的博客" type="application/atom+xml">
   
@@ -82,9 +82,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="https://github.com/song921t" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/921t" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="mail" target="_blank" href="mailto:song921t@qq.com" title="mail"><i class="icon-mail"></i></a>
+					<a class="mail" target="_blank" href="mailto:timiox@foxmail.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -121,9 +121,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="https://github.com/song921t" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/921t" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="mail" target="_blank" href="mailto:song921t@qq.com" title="mail"><i class="icon-mail"></i></a>
+						<a class="mail" target="_blank" href="mailto:timiox@foxmail.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -169,7 +169,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h2><p>1.多表<code>left join</code>会生成一张临时表，并返回给用户。</p>
+        <hr>
+<p>1.多表<code>left join</code>会生成一张临时表，并返回给用户。</p>
 <p>2.<code>where</code>条件是针对最后生成的这张临时表进行过滤，过滤掉不符合<code>where</code>条件的记录，是真正的不符合就过滤掉。</p>
 <p>3.<code>on</code>条件是对<code>left join</code>的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为<code>NUll</code>。</p>
 <p>4.<code>on</code>条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说<code>on</code>中左表的限制条件只影响右表的匹配内容，不影响返回行数。<br><a id="more"></a></p>
