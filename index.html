@@ -170,8 +170,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>本地开发环境为 <code>Valet</code>，<code>PHP</code> 版本是 7.1。最近有个项目需要使用 <code>PHP 5</code> 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。<br>
+        <p>本地开发环境为 <code>Valet</code>，<code>PHP</code> 版本是 7.1。最近有个项目需要使用 <code>PHP 5</code> 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。<br>
         
       
 
@@ -253,8 +252,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>作为一个稍微有点强迫症的人，<code>phpstorm</code> 下原生 <code>SQL</code> 的黄色波浪线让人看的着实有些难受，今天就来解决下。</p>
+        <p>作为一个稍微有点强迫症的人，<code>phpstorm</code> 下原生 <code>SQL</code> 的黄色波浪线让人看的着实有些难受，今天就来解决下。</p>
 <p><img src="/images/phpstorm0.png" alt="avatar"><br>
         
       
@@ -329,8 +327,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>1.多表<code>left join</code>会生成一张临时表，并返回给用户。</p>
+        <p>1.多表<code>left join</code>会生成一张临时表，并返回给用户。</p>
 <p>2.<code>where</code>条件是针对最后生成的这张临时表进行过滤，过滤掉不符合<code>where</code>条件的记录，是真正的不符合就过滤掉。</p>
 <p>3.<code>on</code>条件是对<code>left join</code>的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为<code>NUll</code>。</p>
 <p>4.<code>on</code>条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说<code>on</code>中左表的限制条件只影响右表的匹配内容，不影响返回行数。<br>
@@ -407,8 +404,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。</p>
+        <p>今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。</p>
 <h2 id="CONVERT函数"><a href="#CONVERT函数" class="headerlink" title="CONVERT函数"></a>CONVERT函数</h2><p>数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。</p>
 <p><code>CONVERT()</code>函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：<code>CONVERT(xxx USING gbk)</code>。<br>
         
@@ -484,8 +480,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>最近因为在做登录模块，所以就想写一篇关于Session工作原理的文章。本篇文章结合自己的实践理解以及网上资料的整合。</p>
+        <p>最近因为在做登录模块，所以就想写一篇关于Session工作原理的文章。本篇文章结合自己的实践理解以及网上资料的整合。</p>
 <h2 id="什么是Session"><a href="#什么是Session" class="headerlink" title="什么是Session"></a>什么是Session</h2><p>Session翻译为“会话”的意思，其本意指的是有始有终的一系列动作／消息，如打电话从拿起电话拨号到挂断电话这一系列过程可以称为一个Session。</p>
 <p>在计算机专业术语中，Session是指一个终端用户与交互系统进行通信的时间间隔，通常是指从注册进入系统到注销退出系统所经过的时间。因此，Session实际上是一个特定的时间概念。<br>
         

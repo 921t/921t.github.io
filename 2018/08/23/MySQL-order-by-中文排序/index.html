@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="//litten.me">
   <title>MySQL order by 中文排序 | 921t的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。 CONVERT函数数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。 CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：CONVERT(xxx USIN">
+  <meta name="description" content="今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。 CONVERT函数数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。 CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：CONVERT(xxx USING">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL order by 中文排序">
 <meta property="og:url" content="//litten.me/2018/08/23/MySQL-order-by-中文排序/index.html">
 <meta property="og:site_name" content="921t的博客">
-<meta property="og:description" content="今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。 CONVERT函数数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。 CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：CONVERT(xxx USIN">
+<meta property="og:description" content="今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。 CONVERT函数数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。 CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：CONVERT(xxx USING">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-13T11:39:37.000Z">
+<meta property="og:updated_time" content="2019-03-14T01:29:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL order by 中文排序">
-<meta name="twitter:description" content="今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。 CONVERT函数数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。 CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：CONVERT(xxx USIN">
+<meta name="twitter:description" content="今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。 CONVERT函数数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。 CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：CONVERT(xxx USING">
   
     <link rel="alternative" href="/atom.xml" title="921t的博客" type="application/atom+xml">
   
@@ -169,8 +169,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。</p>
+        <p>今天有个对equipment设备表里的设备名称name字段进行排序的需求，由于之前没有接触过中文排序，所以在网上查阅了一番资料后在此记录下。</p>
 <h2 id="CONVERT函数"><a href="#CONVERT函数" class="headerlink" title="CONVERT函数"></a>CONVERT函数</h2><p>数据表采用utf8字符集，使用中发现中文不能直接按照拼音排序，所以需要使用CONVERT函数进行类型转换。</p>
 <p><code>CONVERT()</code>函数可用来获取一个类型的值，并产生另一个类型的值，用来类型转换。如何字符集转换：<code>CONVERT(xxx USING gbk)</code>。<br><a id="more"></a></p>
 <h2 id="order-by-排序"><a href="#order-by-排序" class="headerlink" title="order by 排序"></a>order by 排序</h2><p>有了CONVERT函数，那么中文排序就简单了。如字段名name排序，</p>
