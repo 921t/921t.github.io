@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Valet切换php版本 | 921t的博客</title>
+  <title>Valet 切换 PHP 版本 | 921t的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。">
 <meta name="keywords" content="PHP,Valet,Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Valet切换php版本">
+<meta property="og:title" content="Valet 切换 PHP 版本">
 <meta property="og:url" content="//litten.me/2019/03/13/Valet切换php版本/index.html">
 <meta property="og:site_name" content="921t的博客">
 <meta property="og:description" content="本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。">
@@ -19,9 +19,9 @@
 <meta property="og:image" content="//litten.me/images/php0.png">
 <meta property="og:image" content="//litten.me/images/php1.png">
 <meta property="og:image" content="//litten.me/images/php2.png">
-<meta property="og:updated_time" content="2019-03-14T01:28:48.000Z">
+<meta property="og:updated_time" content="2019-03-14T02:36:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Valet切换php版本">
+<meta name="twitter:title" content="Valet 切换 PHP 版本">
 <meta name="twitter:description" content="本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。">
 <meta name="twitter:image" content="//litten.me/images/php0.png">
   
@@ -160,7 +160,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Valet切换php版本
+      Valet 切换 PHP 版本
     </h1>
   
 
@@ -173,20 +173,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本地开发环境为 <code>Valet</code>，<code>PHP</code> 版本是 7.1。最近有个项目需要使用 <code>PHP 5</code> 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。<br><a id="more"></a></p>
-<h2 id="安装-PHP-5-6"><a href="#安装-PHP-5-6" class="headerlink" title="安装 PHP 5.6"></a>安装 PHP 5.6</h2><p>我们使用 <code>brew</code> 来安装，因为 <code>brew</code> 已经不支持 <code>PHP 5.6</code>，所以在安装 <code>PHP 5.6</code> 前要添加此 <code>Tap</code>：</p>
+        <p>本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。<br><a id="more"></a></p>
+<h2 id="安装-PHP-5-6"><a href="#安装-PHP-5-6" class="headerlink" title="安装 PHP 5.6"></a>安装 PHP 5.6</h2><p>我们使用 Homebrew 来安装，因为 Homebrew 已经不支持 PHP 5.6，所以在安装 PHP 5.6 前要添加此 <code>Tap</code>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew tap exolnet/homebrew-deprecated</span></span><br></pre></td></tr></table></figure>
 <p>然后选择我们需要安装的版本。</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>brew install php<span class="variable">@5</span>.<span class="number">6</span></span><br></pre></td></tr></table></figure>
-<h2 id="安装-Redis-扩展"><a href="#安装-Redis-扩展" class="headerlink" title="安装 Redis 扩展"></a>安装 <code>Redis</code> 扩展</h2><p>项目需要使用 <code>Redis</code>，我们顺便安装 <code>Redis</code> 扩展。因为 <code>brew</code> 已经不支持 <code>Redis</code> 扩展，在此我们使用 <code>pecl</code> 命令进行安装。</p>
+<h2 id="安装-Redis-扩展"><a href="#安装-Redis-扩展" class="headerlink" title="安装 Redis 扩展"></a>安装 Redis 扩展</h2><p>项目需要使用 Redis，我们顺便安装 Redis 扩展。因为 Homebrew 已经不支持 Redis 扩展，在此我们使用 <code>pecl</code> 命令进行安装。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pecl install redis</span></span><br></pre></td></tr></table></figure>
 <p>安装成功后的 <code>.so</code> 文件存在 <code>/usr/local/Cellar/php@5.6/5.6.40/pecl/20131226/redis.so</code>。</p>
-<p>因为 <code>PHP</code> 的更新，这个路径可能发生变化，所以建议换一个位置存放这个文件，如 <code>/usr/local/lib/php</code> 路径，在目录内新建 <code>extensions</code> 目录「取任意名，<code>ext</code> 或 <code>extensions</code> 都可以」。</p>
+<p>因为 PHP 的更新，这个路径可能发生变化，所以建议换一个位置存放这个文件，如 <code>/usr/local/lib/php</code> 路径，在目录内新建 <code>extensions</code> 目录「取任意名，<code>ext</code> 或 <code>extensions</code> 都可以」。</p>
 <p>将 <code>/usr/local/Cellar/php@5.6/5.6.40/pecl/20131226/</code> 内的 <code>so</code> 文件复制到 <code>/usr/local/lib/php/extensions</code> 目录。</p>
 <p>最后进入 <code>/usr/local/etc/php/5.6/conf.d</code> 目录，新建配置文件，如新建文件 <code>exts.ini</code>：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Redis]</span></span><br><span class="line"><span class="attr">extension</span>=<span class="string">"/usr/local/lib/php/extensions/redis.so"</span></span><br></pre></td></tr></table></figure>
-<p>OK，<code>brew services restart php@5.6</code> 重启 <code>PHP</code> 生效。</p>
-<h4 id="小插曲"><a href="#小插曲" class="headerlink" title="小插曲"></a>小插曲</h4><p>本以上述步骤执行后，安装工作已结束。但是此时 <code>PHP</code> 发生了警告：</p>
+<p>OK，<code>brew services restart php@5.6</code> 重启 PHP 生效。</p>
+<h4 id="小插曲"><a href="#小插曲" class="headerlink" title="小插曲"></a>小插曲</h4><p>本以上述步骤执行后，安装工作已结束。但是此时 PHP 发生了警告：</p>
 <p><img src="/images/php0.png" alt="avatar"></p>
 <p>执行 <code>php --ini</code> 进行查看：</p>
 <p><img src="/images/php1.png" alt="avatar"></p>
@@ -194,8 +194,8 @@
 <p>修改 <code>php.ini</code> 文件：</p>
 <p><img src="/images/php2.png" alt="avatar"></p>
 <p>在 <code>extensions=&quot;redis.so&quot;</code> 前加上 「;」，即注释。</p>
-<p>现在一切准备就绪，接下来让我们切换php版本。</p>
-<h2 id="切换版本"><a href="#切换版本" class="headerlink" title="切换版本"></a>切换版本</h2><p><code>php 7.1</code> 切换到 <code>php 5.6</code></p>
+<p>现在一切准备就绪，接下来让我们切换 PHP 版本。</p>
+<h2 id="切换版本"><a href="#切换版本" class="headerlink" title="切换版本"></a>切换版本</h2><p>php 7.1 切换到 php 5.6</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> valet stop</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew services start php@5.6</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew services stop php@7.1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew unlink php@7.1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew link --force php@5.6</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> valet restart</span></span><br></pre></td></tr></table></figure>
 <p>上述步骤执行后，报如下错：</p>
 <p><code>Parse error: syntax error, unexpected &#39;-&gt;&#39; (T_OBJECT_OPERATOR) in /Users/xutao/.composer/vendor/illuminate/support/Collection.php on line 181</code></p>
@@ -302,7 +302,7 @@
   
   
     <a href="/2019/03/03/phpstorm去除原生SQL的黄色波浪线并增加提示/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">phpstorm去除原生SQL的黄色波浪线并增加提示</div>
+      <div class="article-nav-title">PhpStorm 去除原生 SQL 的黄色波浪线并增加提示</div>
       <i class="icon-circle-right"></i>
     </a>
   

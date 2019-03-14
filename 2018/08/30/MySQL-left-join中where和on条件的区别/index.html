@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>MySQL left join中where和on条件的区别 | 921t的博客</title>
+  <title>MySQL left join 中 where 和 on 条件的区别 | 921t的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.多表left join会生成一张临时表，并返回给用户。 2.where条件是针对最后生成的这张临时表进行过滤，过滤掉不符合where条件的记录，是真正的不符合就过滤掉。 3.on条件是对left join的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为NUll。 4.on条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说on中左表的限">
+  <meta name="description" content="1.多表 left join 会生成一张临时表，并返回给用户。 2.where 条件是针对最后生成的这张临时表进行过滤，过滤掉不符合 where 条件的记录，是真正的不符合就过滤掉。 3.on 条件是对 left join 的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为 NUll。 4.on 条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL left join中where和on条件的区别">
+<meta property="og:title" content="MySQL left join 中 where 和 on 条件的区别">
 <meta property="og:url" content="//litten.me/2018/08/30/MySQL-left-join中where和on条件的区别/index.html">
 <meta property="og:site_name" content="921t的博客">
-<meta property="og:description" content="1.多表left join会生成一张临时表，并返回给用户。 2.where条件是针对最后生成的这张临时表进行过滤，过滤掉不符合where条件的记录，是真正的不符合就过滤掉。 3.on条件是对left join的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为NUll。 4.on条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说on中左表的限">
+<meta property="og:description" content="1.多表 left join 会生成一张临时表，并返回给用户。 2.where 条件是针对最后生成的这张临时表进行过滤，过滤掉不符合 where 条件的记录，是真正的不符合就过滤掉。 3.on 条件是对 left join 的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为 NUll。 4.on 条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-14T01:29:10.000Z">
+<meta property="og:updated_time" content="2019-03-14T02:50:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL left join中where和on条件的区别">
-<meta name="twitter:description" content="1.多表left join会生成一张临时表，并返回给用户。 2.where条件是针对最后生成的这张临时表进行过滤，过滤掉不符合where条件的记录，是真正的不符合就过滤掉。 3.on条件是对left join的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为NUll。 4.on条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说on中左表的限">
+<meta name="twitter:title" content="MySQL left join 中 where 和 on 条件的区别">
+<meta name="twitter:description" content="1.多表 left join 会生成一张临时表，并返回给用户。 2.where 条件是针对最后生成的这张临时表进行过滤，过滤掉不符合 where 条件的记录，是真正的不符合就过滤掉。 3.on 条件是对 left join 的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为 NUll。 4.on 条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也">
   
     <link rel="alternative" href="/atom.xml" title="921t的博客" type="application/atom+xml">
   
@@ -156,7 +156,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MySQL left join中where和on条件的区别
+      MySQL left join 中 where 和 on 条件的区别
     </h1>
   
 
@@ -169,11 +169,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.多表<code>left join</code>会生成一张临时表，并返回给用户。</p>
-<p>2.<code>where</code>条件是针对最后生成的这张临时表进行过滤，过滤掉不符合<code>where</code>条件的记录，是真正的不符合就过滤掉。</p>
-<p>3.<code>on</code>条件是对<code>left join</code>的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为<code>NUll</code>。</p>
-<p>4.<code>on</code>条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说<code>on</code>中左表的限制条件只影响右表的匹配内容，不影响返回行数。<br><a id="more"></a></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.<code>where</code>条件中对左表限制，不能放到<code>on</code>后面。<br>2.<code>where</code>条件中对右表限制，放到<code>on</code>后面，会有数据行数差异，比原来的行数要多。<br>3.<code>left join</code>生成的是一张临时表，根据需求使用where和on条件的过滤。</p>
+        <p>1.多表 <code>left join</code> 会生成一张临时表，并返回给用户。</p>
+<p>2.<code>where</code> 条件是针对最后生成的这张临时表进行过滤，过滤掉不符合 <code>where</code> 条件的记录，是真正的不符合就过滤掉。</p>
+<p>3.<code>on</code> 条件是对 <code>left join</code> 的右表进行条件过滤，但依然返回左表的所有行，右表中没有的补为 <code>NUll</code>。</p>
+<p>4.<code>on</code> 条件中如果有对左表的条件限制，无论条件真假，依然返回左表的所有行，但是会影响右表的匹配值。也就是说 <code>on</code> 中左表的限制条件只影响右表的匹配内容，不影响返回行数。<br><a id="more"></a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.<code>where</code> 条件中对左表限制，不能放到 <code>on</code> 后面。<br>2.<code>where</code> 条件中对右表限制，放到 <code>on</code> 后面，会有数据行数差异，比原来的行数要多。<br>3.<code>left join</code> 生成的是一张临时表，根据需求使用 <code>where</code> 和 <code>on</code> 条件的过滤。</p>
 <p>参考文献：<a href="https://www.cnblogs.com/cuisi/p/7685893.html" target="_blank" rel="noopener">https://www.cnblogs.com/cuisi/p/7685893.html</a></p>
 
       
@@ -262,14 +262,14 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          phpstorm去除原生SQL的黄色波浪线并增加提示
+          PhpStorm 去除原生 SQL 的黄色波浪线并增加提示
         
       </div>
     </a>
   
   
     <a href="/2018/08/23/MySQL-order-by-中文排序/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MySQL order by 中文排序</div>
+      <div class="article-nav-title">MySQL Order By 中文排序</div>
       <i class="icon-circle-right"></i>
     </a>
   
