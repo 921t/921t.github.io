@@ -6,24 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Valet 切换 PHP 版本 | 921t的博客</title>
+  <title>深入理解 PHP 引用 | 921t的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。">
-<meta name="keywords" content="PHP,Valet,Redis">
+  <meta name="description" content="上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。">
+<meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Valet 切换 PHP 版本">
-<meta property="og:url" content="//litten.me/2019/03/13/Valet切换php版本/index.html">
+<meta property="og:title" content="深入理解 PHP 引用">
+<meta property="og:url" content="//litten.me/2019/03/28/深入理解PHP引用/index.html">
 <meta property="og:site_name" content="921t的博客">
-<meta property="og:description" content="本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。">
+<meta property="og:description" content="上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="//litten.me/images/php0.png">
-<meta property="og:image" content="//litten.me/images/php1.png">
-<meta property="og:image" content="//litten.me/images/php2.png">
-<meta property="og:updated_time" content="2019-03-14T02:36:28.000Z">
+<meta property="og:updated_time" content="2019-03-28T10:24:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Valet 切换 PHP 版本">
-<meta name="twitter:description" content="本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。">
-<meta name="twitter:image" content="//litten.me/images/php0.png">
+<meta name="twitter:title" content="深入理解 PHP 引用">
+<meta name="twitter:description" content="上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。">
   
     <link rel="alternative" href="/atom.xml" title="921t的博客" type="application/atom+xml">
   
@@ -153,61 +149,58 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Valet切换php版本" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-深入理解PHP引用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Valet 切换 PHP 版本
+      深入理解 PHP 引用
     </h1>
   
 
         
-        <a href="/2019/03/13/Valet切换php版本/" class="archive-article-date">
-  	<time datetime="2019-03-13T11:47:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
+        <a href="/2019/03/28/深入理解PHP引用/" class="archive-article-date">
+  	<time datetime="2019-03-28T02:56:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。<br><a id="more"></a></p>
-<h2 id="安装-PHP-5-6"><a href="#安装-PHP-5-6" class="headerlink" title="安装 PHP 5.6"></a>安装 PHP 5.6</h2><p>我们使用 Homebrew 来安装，因为 Homebrew 已经不支持 PHP 5.6，所以在安装 PHP 5.6 前要添加此 <code>Tap</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew tap exolnet/homebrew-deprecated</span></span><br></pre></td></tr></table></figure>
-<p>然后选择我们需要安装的版本。</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>brew install php<span class="variable">@5</span>.<span class="number">6</span></span><br></pre></td></tr></table></figure>
-<h2 id="安装-Redis-扩展"><a href="#安装-Redis-扩展" class="headerlink" title="安装 Redis 扩展"></a>安装 Redis 扩展</h2><p>项目需要使用 Redis，我们顺便安装 Redis 扩展。因为 Homebrew 已经不支持 Redis 扩展，在此我们使用 <code>pecl</code> 命令进行安装。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pecl install redis</span></span><br></pre></td></tr></table></figure>
-<p>安装成功后的 <code>.so</code> 文件存在 <code>/usr/local/Cellar/php@5.6/5.6.40/pecl/20131226/redis.so</code>。</p>
-<p>因为 PHP 的更新，这个路径可能发生变化，所以建议换一个位置存放这个文件，如 <code>/usr/local/lib/php</code> 路径，在目录内新建 <code>extensions</code> 目录「取任意名，<code>ext</code> 或 <code>extensions</code> 都可以」。</p>
-<p>将 <code>/usr/local/Cellar/php@5.6/5.6.40/pecl/20131226/</code> 内的 <code>so</code> 文件复制到 <code>/usr/local/lib/php/extensions</code> 目录。</p>
-<p>最后进入 <code>/usr/local/etc/php/5.6/conf.d</code> 目录，新建配置文件，如新建文件 <code>exts.ini</code>：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Redis]</span></span><br><span class="line"><span class="attr">extension</span>=<span class="string">"/usr/local/lib/php/extensions/redis.so"</span></span><br></pre></td></tr></table></figure>
-<p>OK，<code>brew services restart php@5.6</code> 重启 PHP 生效。</p>
-<h4 id="小插曲"><a href="#小插曲" class="headerlink" title="小插曲"></a>小插曲</h4><p>本以上述步骤执行后，安装工作已结束。但是此时 PHP 发生了警告：</p>
-<p><img src="/images/php0.png" alt="avatar"></p>
-<p>执行 <code>php --ini</code> 进行查看：</p>
-<p><img src="/images/php1.png" alt="avatar"></p>
-<p>可以看到提示信息，因为 <code>php.ini</code> 文件内已经加载了 <code>redis.so</code>，所以不会再加载 <code>/usr/local/etc/php/5.6/conf.d/exts.ini</code> 内的 <code>redis.so</code>，注释掉 <code>php.ini</code> 内的 <code>redis.so</code> 即可。</p>
-<p>修改 <code>php.ini</code> 文件：</p>
-<p><img src="/images/php2.png" alt="avatar"></p>
-<p>在 <code>extensions=&quot;redis.so&quot;</code> 前加上 「;」，即注释。</p>
-<p>现在一切准备就绪，接下来让我们切换 PHP 版本。</p>
-<h2 id="切换版本"><a href="#切换版本" class="headerlink" title="切换版本"></a>切换版本</h2><p>php 7.1 切换到 php 5.6</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> valet stop</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew services start php@5.6</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew services stop php@7.1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew unlink php@7.1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew link --force php@5.6</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> valet restart</span></span><br></pre></td></tr></table></figure>
-<p>上述步骤执行后，报如下错：</p>
-<p><code>Parse error: syntax error, unexpected &#39;-&gt;&#39; (T_OBJECT_OPERATOR) in /Users/xutao/.composer/vendor/illuminate/support/Collection.php on line 181</code></p>
-<p>在 <code>~/.composer</code> 目录下，执行 <code>composer update</code> 即可解决。</p>
-<p>运行项目，出现 <code>nginx  502 Bad Gateway</code> 错误，执行 <code>valet install</code>，解决。</p>
+        <p>上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。<br><a id="more"></a></p>
+<h2 id="引用的概念"><a href="#引用的概念" class="headerlink" title="引用的概念"></a>引用的概念</h2><p>在 PHP 中引用意味着用不同的名字访问同一个变量内容。PHP 的引用就是在变量或者函数、对象等前面加上 <code>&amp;</code> 符号，如 <code>$a = &amp;$b</code>，这意味着 <code>$a</code> 和 <code>$b</code> 指向了同一个变量。</p>
+<ul>
+<li><code>$a</code> 和 <code>$b</code> 是完全相同的，这并不是 <code>$a</code> 指向了 <code>$b</code> 或者相反，而是 <code>$a</code> 和 <code>$b</code> 指向了同一个地方。</li>
+<li>如果对一个未定义的变量进行引用赋值、引用参数传递或引用返回，则会自动创建该变量。</li>
+</ul>
+<h2 id="引用赋值"><a href="#引用赋值" class="headerlink" title="引用赋值"></a>引用赋值</h2><ul>
+<li>如果具有引用的数组被拷贝，其值不会解除引用。对数组传值给函数也是如此。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">a = [1, 2, 3];</span></span><br><span class="line"><span class="meta">$</span><span class="bash">b = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash">a = &amp;<span class="variable">$b</span>;</span></span><br><span class="line"><span class="meta">$</span><span class="bash">c = <span class="variable">$b</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash">b = 10;</span></span><br><span class="line"><span class="meta">var_dump($</span><span class="bash">a); // int(10)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>对同一变量进行多次引用赋值，前面的引用关系会失效。</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="number">10</span>;</span><br><span class="line"><span class="variable">$c</span> = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$b</span> = &amp;<span class="variable">$a</span>;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> <span class="variable">$b</span> = <span class="variable">$c</span>;  <span class="variable">$a</span>等于<span class="number">20</span></span><br><span class="line"><span class="variable">$b</span> = &amp;<span class="variable">$c</span>;</span><br><span class="line"></span><br><span class="line">var_dump(<span class="variable">$a</span>); <span class="regexp">//</span> int(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h2><p>可以将一个变量通过引用传递给函数，这样函数就可以修改其参数的值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">(&amp;$var)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $var++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a = <span class="number">5</span>;</span><br><span class="line">foo($a); <span class="comment">// $a is 6 here</span></span><br><span class="line">&amp;foo($a); <span class="comment">// syntax error, unexpected '&amp;'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意在函数调用时没有引用符号——只有函数定义中有。</p>
+</blockquote>
+<p>以下内容可以通过引用传递</p>
+<ul>
+<li>变量，如 <code>foo($a)</code></li>
+<li>New 语句，如 <code>foo(new foobar())</code></li>
+<li>从函数中返回的引用</li>
+</ul>
+<h2 id="引用返回"><a href="#引用返回" class="headerlink" title="引用返回"></a>引用返回</h2><p>引用返回用在当想用函数找到引用应该被绑定在哪一个变量上时。<em>不要用返回引用来增加性能，引擎足够聪明来自己优化。仅在有合理的技术原因时才返回引用！</em></p>
+<p>使用语法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class"></span>&#123;  </span><br><span class="line">  <span class="keyword">public</span> $value = <span class="number">42</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> &amp;<span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> foo;</span><br><span class="line">$myValue = &amp;$obj-&gt;getValue(); <span class="comment">// $myValue is a reference to $obj-&gt;value, which is 42.</span></span><br><span class="line">$obj-&gt;value = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">echo</span> $myValue;                <span class="comment">// prints the new value of $obj-&gt;value, i.e. 2.</span></span><br></pre></td></tr></table></figure>
+<p>和参数传递不同，这里必须在两个地方都用 <code>&amp;</code> 符号——指出返回的是一个引用，而不是通常的一个拷贝，同样也指出 <code>$myValue</code> 是作为引用的绑定，而不是通常的赋值。</p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a href="https://getgrav.org/blog/macos-mojave-apache-multiple-php-versions" target="_blank" rel="noopener">https://getgrav.org/blog/macos-mojave-apache-multiple-php-versions</a></li>
-<li><a href="https://blog.csdn.net/maxsky/article/details/80280404" target="_blank" rel="noopener">https://blog.csdn.net/maxsky/article/details/80280404</a></li>
-<li><a href="https://stackoverflow.com/questions/32764981/php-warning-module-already-loaded-in-unknown-on-line-0" target="_blank" rel="noopener">https://stackoverflow.com/questions/32764981/php-warning-module-already-loaded-in-unknown-on-line-0</a></li>
-<li><a href="https://www.jianshu.com/p/54176a6f24c1" target="_blank" rel="noopener">https://www.jianshu.com/p/54176a6f24c1</a></li>
-<li><a href="https://github.com/laravel/valet/pull/535#issue-174177804" target="_blank" rel="noopener">https://github.com/laravel/valet/pull/535#issue-174177804</a></li>
-<li><a href="https://github.com/laravel/valet/issues/269#issuecomment-267761780" target="_blank" rel="noopener">https://github.com/laravel/valet/issues/269#issuecomment-267761780</a></li>
+<li><a href="https://www.php.net/manual/zh/language.references.php" target="_blank" rel="noopener">https://www.php.net/manual/zh/language.references.php</a></li>
+<li><a href="https://www.cnblogs.com/thinksasa/p/3334492.html" target="_blank" rel="noopener">https://www.cnblogs.com/thinksasa/p/3334492.html</a></li>
 </ul>
 
       
@@ -223,14 +216,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Valet</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
@@ -286,7 +271,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://litten.me/2019/03/13/Valet切换php版本/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://litten.me/2019/03/28/深入理解PHP引用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -300,18 +285,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/27/PHP无限极分类/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          PHP 无限极分类
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/03/03/phpstorm去除原生SQL的黄色波浪线并增加提示/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">PhpStorm 去除原生 SQL 的黄色波浪线并增加提示</div>
+    <a href="/2019/03/27/PHP无限极分类/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP 无限极分类</div>
       <i class="icon-circle-right"></i>
     </a>
   
