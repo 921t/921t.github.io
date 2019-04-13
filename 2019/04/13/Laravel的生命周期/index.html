@@ -6,19 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Tag: MySQL | 921t的博客</title>
+  <title>Laravel 的生命周期 | 921t的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="php开发人员。">
-<meta name="keywords" content="php,js,jquery,javascript,开发者,程序猿,编程,代码,开源,IT网站,Developer,Programmer,Coder,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="921t的博客">
-<meta property="og:url" content="//litten.me/tags/MySQL/index.html">
+  <meta name="description" content="本文为转载文章原文出自：Laravel 的生命周期  世间万物皆有生命周期，当我们使用任何工具时都需要理解它的工作原理，那么用起来就会得心应手，应用开发也是如此。理解了它的原理，那么使用起来就会游刃有余。在了解 Laravel 的生命周期前，我们先回顾一下 PHP 的生命周期。">
+<meta name="keywords" content="PHP,Laravel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel 的生命周期">
+<meta property="og:url" content="//litten.me/2019/04/13/Laravel的生命周期/index.html">
 <meta property="og:site_name" content="921t的博客">
-<meta property="og:description" content="php开发人员。">
+<meta property="og:description" content="本文为转载文章原文出自：Laravel 的生命周期  世间万物皆有生命周期，当我们使用任何工具时都需要理解它的工作原理，那么用起来就会得心应手，应用开发也是如此。理解了它的原理，那么使用起来就会游刃有余。在了解 Laravel 的生命周期前，我们先回顾一下 PHP 的生命周期。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="//litten.me/images/laravel1.png">
+<meta property="og:image" content="//litten.me/images/laravel2.png">
+<meta property="og:image" content="//litten.me/images/laravel3.png">
+<meta property="og:image" content="//litten.me/images/laravel4.png">
+<meta property="og:updated_time" content="2019-04-13T12:47:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="921t的博客">
-<meta name="twitter:description" content="php开发人员。">
+<meta name="twitter:title" content="Laravel 的生命周期">
+<meta name="twitter:description" content="本文为转载文章原文出自：Laravel 的生命周期  世间万物皆有生命周期，当我们使用任何工具时都需要理解它的工作原理，那么用起来就会得心应手，应用开发也是如此。理解了它的原理，那么使用起来就会游刃有余。在了解 Laravel 的生命周期前，我们先回顾一下 PHP 的生命周期。">
+<meta name="twitter:image" content="//litten.me/images/laravel1.png">
   
     <link rel="alternative" href="/atom.xml" title="921t的博客" type="application/atom+xml">
   
@@ -148,98 +154,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Laravel的生命周期" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/30/MySQL-left-join中where和on条件的区别/" class="archive-article-date">
-  	<time datetime="2018-08-30T08:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/30/MySQL-left-join中where和on条件的区别/">MySQL left join 中 where 和 on 条件的区别</a>
+    <h1 class="article-title" itemprop="name">
+      Laravel 的生命周期
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/13/Laravel的生命周期/" class="archive-article-date">
+  	<time datetime="2019-04-13T00:59:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本文为转载文章<br>原文出自：<a href="https://www.jianshu.com/p/08b810b720d9" target="_blank" rel="noopener">Laravel 的生命周期</a></p>
+</blockquote>
+<p>世间万物皆有生命周期，当我们使用任何工具时都需要理解它的工作原理，那么用起来就会得心应手，应用开发也是如此。理解了它的原理，那么使用起来就会游刃有余。<br>在了解 Laravel 的生命周期前，我们先回顾一下 PHP 的生命周期。<br><a id="more"></a></p>
+<h2 id="PHP-的生命周期"><a href="#PHP-的生命周期" class="headerlink" title="PHP 的生命周期"></a>PHP 的生命周期</h2><h3 id="PHP-的运行模式"><a href="#PHP-的运行模式" class="headerlink" title="PHP 的运行模式"></a>PHP 的运行模式</h3><p>PHP 两种运行模式是 WEB 模式、CLI 模式。</p>
+<p>1.当我们在终端敲入 php 这个命令的时候，使用的是 CLI 模式。<br>2.当使用 Nginx 或者别的 Web 服务器作为宿主处理一个到来的请求时，使用的是 WEB 模式。</p>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>当我们请求一个 php 文件时，PHP 为了完成这次请求，会发生 5 个阶段的生命周期切换：  </p>
+<ol>
+<li>模块初始化（MINIT），即调用 <code>php.ini</code> 中指明的扩展的初始化函数进行初始化工作，如 mysql 扩展。  </li>
+<li>请求初始化（RINIT），即初始化为执行本次脚本所需要的变量名称和变量值内容的符号表，如 <code>$_SESSION</code> 变量。  </li>
+<li>执行该 PHP 脚本。  </li>
+<li>请求处理完成（Request Shutdown），按顺序调用各个模块的 <code>RSHUTDOWN</code> 方法，对每个变量调用 <code>unset</code> 函数，如 <code>unset $_SESSION</code> 变量。  </li>
+<li>关闭模块（Module Shutdown），PHP 调用每个扩展的 <code>MSHUTDOWN</code> 方法，这是各个模块最后一次释放内存的机会。这意味着没有下一次请求了。</li>
+</ol>
+<p>WEB 模式和 CLI（命令行）模式很相似，区别是：   </p>
+<ol>
+<li>CLI 模式会在每次脚本执行经历完整的 5 个周期，因为你脚本执行完不会有下一次请求。  </li>
+<li>WEB 模式为了应对并发，可能采用多线程，因此生命周期 <code>1</code> 和 <code>5</code> 有可能只执行一次，下次请求到来时重复 <code>2-4</code> 的生命周期，这样就节省了系统模块初始化所带来了的开销。  </li>
+</ol>
+<p>可以看出来 PHP 生命周期是很对称的。说了这么多，就是为了定位 Laravel 运行在哪里，没错，Laravel 仅仅运行在第三阶段：</p>
+<p><img src="/images/laravel1.png" alt="avatar"></p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>理解这些，你就可以优化你的 laravel 代码，可以更加深入了解 Laravel 的 <code>singleton</code>（单例）。至少你知道了，每一次请求结束，PHP 的变量都会 <code>unset</code>，Laravel 的 <code>singleton</code> 只是在某一次请求过程中的 <code>singleton</code>。你在 Laravel 中的静态变量也不能在多个请求之间共享，因为每次请求结束都会 <code>unset</code>。理解这些概念，是写高质量代码的第一步，也是最关键的一步。因此记住，PHP 是一种脚本语言，所有的变量只会在这一次请求中生效，下次请求之时已被重置，而不像 Java 静态变量拥有全局作用。</p>
+<h2 id="Laravel-的生命周期"><a href="#Laravel-的生命周期" class="headerlink" title="Laravel 的生命周期"></a>Laravel 的生命周期</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Laravel 的生命周期从 <code>public\index.php</code> 开始，从 <code>public\index.php</code> 结束。</p>
+<p><img src="/images/laravel2.png" alt="avatar"></p>
+<p>下面是 <code>public\index.php</code> 源码，更具体可以分为四部：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">'/../vendor/autoload.php'</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> $app = <span class="keyword">require_once</span> <span class="keyword">__DIR__</span>.<span class="string">'/../bootstrap/app.php'</span>;</span><br><span class="line">   $kernel = $app-&gt;make(Illuminate\Contracts\Http\Kernel::class);</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> $response = $kernel-&gt;handle(</span><br><span class="line">      $request = Illuminate\Http\Request::capture()</span><br><span class="line">   );</span><br><span class="line">   $response-&gt;send();</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> $kernel-&gt;terminate($request, $response);</span><br></pre></td></tr></table></figure>
+<p>以下是四步详细的解释：</p>
+<ol>
+<li>composer 自动加载需要的类，文件载入 composer 生成的自动加载设置，包括所有你 <code>composer require</code> 的依赖。  </li>
+<li>生成容器 Container（Application 实例），并向容器注册核心组件（HttpKernel，ConsoleKernel，ExceptionHandler），「对应代码 2，容器很重要，后面详细讲解」。  </li>
+<li>处理请求，生成并发送响应，「对应代码 3，毫不夸张的说，你 99% 的代码都运行在这个小小的 <code>handle</code> 方法里面」。  </li>
+<li>请求结束，进行回调，「对应代码 4，还记得 <a href="https://laravel.com/docs/5.7/middleware" target="_blank" rel="noopener">可终止中间件</a> 吗？没错，就是在这里回调的」。</li>
+</ol>
+<p><img src="/images/laravel3.png" alt="avatar"></p>
+<p>我们不妨再详细一点：</p>
+<p>第一步：注册加载 composer 自动生成的 <code>class loader</code><br>就是加载初始化第三方依赖。</p>
+<p>第二步：生成容器 Container<br>并向容器注册核心组件，是从 <code>bootstrap/app.php</code> 脚本获取 Laravel 应用实例。</p>
+<p>第三步： 这一步是重点，处理请求，并生成发送响应。<br>请求被发送到 <code>Http</code> 内核或 <code>Console</code> 内核，这取决于进入应用的请求类型。  </p>
+<p>取决于是通过浏览器请求还是通过控制台请求。这里我们主要是通过浏览器请求。</p>
+<blockquote>
+<p>HTTP 内核的标志性方法 <code>handle</code> 处理的逻辑相当简单：获取一个 <code>Request</code>，返回一个 <code>Response</code>，把内核想象为一个代表整个应用的大黑盒子，输入 HTTP 请求，返回 HTTP 响应。</p>
+</blockquote>
+<p>1.首先 Bootstrap 检测环境，加载 <code>bootstrappers</code> 数组中的一些配置</p>
+<p>HTTP 内核继承自 <code>Illuminate\Foundation\Http\Kernel</code>类，该类定义了一个 <code>bootstrappers</code> 数组，这个数组中的类在请求被执行前运行，这些 <code>bootstrappers</code> 配置了错误处理、日志、检测应用环境以及其它在请求被处理前需要执行的任务。</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">protected <span class="formula">$bootstrappers = [</span></span><br><span class="line"><span class="formula">        //注册系统环境配置 （.env）</span></span><br><span class="line"><span class="formula">        'Illuminate<span class="tag">\<span class="name">Foundation</span></span><span class="tag">\<span class="name">Bootstrap</span></span><span class="tag">\<span class="name">DetectEnvironment</span></span>',</span></span><br><span class="line"><span class="formula">        //注册系统配置（config）</span></span><br><span class="line"><span class="formula">        'Illuminate<span class="tag">\<span class="name">Foundation</span></span><span class="tag">\<span class="name">Bootstrap</span></span><span class="tag">\<span class="name">LoadConfiguration</span></span>',</span></span><br><span class="line"><span class="formula">        //注册日志配置</span></span><br><span class="line"><span class="formula">        'Illuminate<span class="tag">\<span class="name">Foundation</span></span><span class="tag">\<span class="name">Bootstrap</span></span><span class="tag">\<span class="name">ConfigureLogging</span></span>',</span></span><br><span class="line"><span class="formula">        //注册异常处理</span></span><br><span class="line"><span class="formula">        'Illuminate<span class="tag">\<span class="name">Foundation</span></span><span class="tag">\<span class="name">Bootstrap</span></span><span class="tag">\<span class="name">HandleExceptions</span></span>',</span></span><br><span class="line"><span class="formula">        //注册服务容器的门面，Facade 是个提供从容器访问对象的类。</span></span><br><span class="line"><span class="formula">        'Illuminate<span class="tag">\<span class="name">Foundation</span></span><span class="tag">\<span class="name">Bootstrap</span></span><span class="tag">\<span class="name">RegisterFacades</span></span>',</span></span><br><span class="line"><span class="formula">        //注册服务提供者</span></span><br><span class="line"><span class="formula">        'Illuminate<span class="tag">\<span class="name">Foundation</span></span><span class="tag">\<span class="name">Bootstrap</span></span><span class="tag">\<span class="name">RegisterProviders</span></span>',</span></span><br><span class="line"><span class="formula">        //注册服务提供者 `boot`</span></span><br><span class="line"><span class="formula">        'Illuminate<span class="tag">\<span class="name">Foundation</span></span><span class="tag">\<span class="name">Bootstrap</span></span><span class="tag">\<span class="name">BootProviders</span></span>',</span></span><br><span class="line"><span class="formula">    ];</span></span><br></pre></td></tr></table></figure>
+<p>注意顺序：<br>  <code>Facades</code> 先于 <code>ServiceProviders</code>，<code>Facades</code> 也是重点，后面说，这里简单提一下，注册 <code>Facades</code> 就是注册 <code>config\app.php</code> 中的 <code>aliases</code> 数组，你使用的很多类，如 <code>Auth</code>，<code>Cache</code>，<code>DB</code>，等等都是 <code>Facades</code>。而 <code>ServiceProviders</code> 的 <code>register</code> 方法永远先于 <code>boot</code> 方法执行，以免产生 <code>boot</code> 方法依赖某个实例而该实例还未注册的现象。</p>
+<blockquote>
+<p>HTTP 内核还定义了一系列所有请求在处理前需要经过的 HTTP 中间件，这些中间件处理 HTTP 会话的读写、判断应用是否处于维护模式、验证 CSRF 令牌等等。</p>
+</blockquote>
+<p>2.第一堵墙，全局中间件，默认为 <code>CheckForMaintenanceMode</code></p>
+<p>在 Laravel 基础的服务启动之后，就要把请求传递给路由了。路由器将会分发请求到路由或控制器，同时运行所有路由指定的中间件。</p>
+<p>传递方式</p>
+<p>传递给路由是通过 <code>Pipeline</code>（管道）来传递的，但是 Pipeline 有一堵墙，在传递给路由之前所有请求都要经过，这堵墙定义在 <code>app\Http\Kernel.php</code> 中的 <code>$middleware</code> 数组中，没错就是中间件，<code>CheckForMaintenanceMode</code> 中间件用来检测你的网站是否暂时关闭。这是一个全局中间件，所有请求都要经过，你也可以添加自己的全局中间件。</p>
+<p>3.然后遍历所有注册的路由，找到最先符合的第一个路由</p>
+<p>4.第二堵墙，通过该路由的中间件（组）</p>
+<p>经过该路由中间件，进入到你的控制器或闭包函数，执行你的具体逻辑代码。</p>
+<p>所以，当请求到达你写的代码之前，Laravel 已经做了大量的工作 ，请求也经过了千难万险，那些不符合或者恶意的请求已被 Laravel 隔离在外。</p>
+<p><img src="/images/laravel4.png" alt="avatar"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/23/MySQL-order-by-中文排序/" class="archive-article-date">
-  	<time datetime="2018-08-23T13:31:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/23/MySQL-order-by-中文排序/">MySQL Order By 中文排序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Laravel</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://litten.me/2019/04/13/Laravel的生命周期/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/03/28/深入理解PHP引用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入理解 PHP 引用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -262,9 +377,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

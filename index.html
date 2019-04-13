@@ -150,6 +150,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Laravel的生命周期" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/13/Laravel的生命周期/">Laravel 的生命周期</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/13/Laravel的生命周期/" class="archive-article-date">
+  	<time datetime="2019-04-13T00:59:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本文为转载文章<br>原文出自：<a href="https://www.jianshu.com/p/08b810b720d9" target="_blank" rel="noopener">Laravel 的生命周期</a></p>
+</blockquote>
+<p>世间万物皆有生命周期，当我们使用任何工具时都需要理解它的工作原理，那么用起来就会得心应手，应用开发也是如此。理解了它的原理，那么使用起来就会游刃有余。<br>在了解 Laravel 的生命周期前，我们先回顾一下 PHP 的生命周期。<br>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Laravel</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/13/Laravel的生命周期/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-深入理解PHP引用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -170,7 +251,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。<br>
+        <p>上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。</p>
+<h2 id="引用的概念"><a href="#引用的概念" class="headerlink" title="引用的概念"></a>引用的概念</h2><p>在 PHP 中引用意味着用不同的名字访问同一个变量内容。PHP 的引用就是在变量或者函数、对象等前面加上 <code>&amp;</code> 符号，如 <code>$a = &amp;$b</code>，这意味着 <code>$a</code> 和 <code>$b</code> 指向了同一个变量。<br>
         
       
 
@@ -318,7 +400,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。<br>
+        <p>本地开发环境为 Valet，PHP 版本是 7.1。最近有个项目需要使用 PHP 5 版本，在安装切换中的过程踩了一些坑，所以写篇文章记录下。</p>
+<h2 id="安装-PHP-5-6"><a href="#安装-PHP-5-6" class="headerlink" title="安装 PHP 5.6"></a>安装 PHP 5.6</h2><p>我们使用 Homebrew 来安装，因为 Homebrew 已经不支持 PHP 5.6，所以在安装 PHP 5.6 前要添加此 <code>Tap</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew tap exolnet/homebrew-deprecated</span></span><br></pre></td></tr></table></figure>
         
       
 
@@ -773,11 +857,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="//litten.me">
   <title>深入理解 PHP 引用 | 921t的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。">
+  <meta name="description" content="上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。 引用的概念在 PHP 中引用意味着用不同的名字访问同一个变量内容。PHP 的引用就是在变量或者函数、对象等前面加上 &amp;amp; 符号，如 $a = &amp;amp;$b，这意味着 $a 和 $b 指向了同一个变量。">
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解 PHP 引用">
 <meta property="og:url" content="//litten.me/2019/03/28/深入理解PHP引用/index.html">
 <meta property="og:site_name" content="921t的博客">
-<meta property="og:description" content="上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。">
+<meta property="og:description" content="上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。 引用的概念在 PHP 中引用意味着用不同的名字访问同一个变量内容。PHP 的引用就是在变量或者函数、对象等前面加上 &amp;amp; 符号，如 $a = &amp;amp;$b，这意味着 $a 和 $b 指向了同一个变量。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-28T10:24:26.000Z">
+<meta property="og:updated_time" content="2019-04-13T01:32:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解 PHP 引用">
-<meta name="twitter:description" content="上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。">
+<meta name="twitter:description" content="上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。 引用的概念在 PHP 中引用意味着用不同的名字访问同一个变量内容。PHP 的引用就是在变量或者函数、对象等前面加上 &amp;amp; 符号，如 $a = &amp;amp;$b，这意味着 $a 和 $b 指向了同一个变量。">
   
     <link rel="alternative" href="/atom.xml" title="921t的博客" type="application/atom+xml">
   
@@ -169,8 +169,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。<br><a id="more"></a></p>
-<h2 id="引用的概念"><a href="#引用的概念" class="headerlink" title="引用的概念"></a>引用的概念</h2><p>在 PHP 中引用意味着用不同的名字访问同一个变量内容。PHP 的引用就是在变量或者函数、对象等前面加上 <code>&amp;</code> 符号，如 <code>$a = &amp;$b</code>，这意味着 <code>$a</code> 和 <code>$b</code> 指向了同一个变量。</p>
+        <p>上一篇文章用 PHP 引用的思想实现了无限极分类，发现自己对 PHP 引用的理解还不够深入，现在让我们一起研究下。</p>
+<h2 id="引用的概念"><a href="#引用的概念" class="headerlink" title="引用的概念"></a>引用的概念</h2><p>在 PHP 中引用意味着用不同的名字访问同一个变量内容。PHP 的引用就是在变量或者函数、对象等前面加上 <code>&amp;</code> 符号，如 <code>$a = &amp;$b</code>，这意味着 <code>$a</code> 和 <code>$b</code> 指向了同一个变量。<br><a id="more"></a></p>
 <ul>
 <li><code>$a</code> 和 <code>$b</code> 是完全相同的，这并不是 <code>$a</code> 指向了 <code>$b</code> 或者相反，而是 <code>$a</code> 和 <code>$b</code> 指向了同一个地方。</li>
 <li>如果对一个未定义的变量进行引用赋值、引用参数传递或引用返回，则会自动创建该变量。</li>
@@ -284,6 +284,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/04/13/Laravel的生命周期/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Laravel 的生命周期
+        
+      </div>
+    </a>
   
   
     <a href="/2019/03/27/PHP无限极分类/" id="article-nav-older" class="article-nav-link-wrap">
@@ -409,11 +418,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
