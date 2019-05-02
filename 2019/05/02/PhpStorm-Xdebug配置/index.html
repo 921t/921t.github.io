@@ -6,19 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Tag: Laravel | 921t的博客</title>
+  <title>Macos 下 PhpStorm + Xdebug 配置 | 921t的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="php开发人员。">
-<meta name="keywords" content="php,js,jquery,javascript,开发者,程序猿,编程,代码,开源,IT网站,Developer,Programmer,Coder,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="921t的博客">
-<meta property="og:url" content="//litten.me/tags/Laravel/index.html">
+  <meta name="description" content="一、安装 Xdebug 扩展 Xdebug 可以通过 pecl 和 官网下载两种方式安装。 1.pecl 安装 1pecl install xdebug 一开始通过 pecl 安装时，在此踩了很久的坑。pecl 安装的是最新版 2.7.1 的，我的 PHP 版本是 7.2，一直配置不成功，后来通过第二种方式把 Xdebug 版本切换成 2.6.0 即可。">
+<meta name="keywords" content="PhpStorm,Xdebug,Macos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Macos 下 PhpStorm + Xdebug 配置">
+<meta property="og:url" content="//litten.me/2019/05/02/PhpStorm-Xdebug配置/index.html">
 <meta property="og:site_name" content="921t的博客">
-<meta property="og:description" content="php开发人员。">
+<meta property="og:description" content="一、安装 Xdebug 扩展 Xdebug 可以通过 pecl 和 官网下载两种方式安装。 1.pecl 安装 1pecl install xdebug 一开始通过 pecl 安装时，在此踩了很久的坑。pecl 安装的是最新版 2.7.1 的，我的 PHP 版本是 7.2，一直配置不成功，后来通过第二种方式把 Xdebug 版本切换成 2.6.0 即可。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="//litten.me/images/xdebug0.png">
+<meta property="og:image" content="//litten.me/images/xdebug1.png">
+<meta property="og:image" content="//litten.me/images/xdebug2.png">
+<meta property="og:image" content="//litten.me/images/xdebug3.png">
+<meta property="og:image" content="//litten.me/images/xdebug4.png">
+<meta property="og:updated_time" content="2019-05-02T02:18:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="921t的博客">
-<meta name="twitter:description" content="php开发人员。">
+<meta name="twitter:title" content="Macos 下 PhpStorm + Xdebug 配置">
+<meta name="twitter:description" content="一、安装 Xdebug 扩展 Xdebug 可以通过 pecl 和 官网下载两种方式安装。 1.pecl 安装 1pecl install xdebug 一开始通过 pecl 安装时，在此踩了很久的坑。pecl 安装的是最新版 2.7.1 的，我的 PHP 版本是 7.2，一直配置不成功，后来通过第二种方式把 Xdebug 版本切换成 2.6.0 即可。">
+<meta name="twitter:image" content="//litten.me/images/xdebug0.png">
   
     <link rel="alternative" href="/atom.xml" title="921t的博客" type="application/atom+xml">
   
@@ -148,110 +155,196 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-PhpStorm-Xdebug配置" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/30/Laravel框架关键技术解析笔记/" class="archive-article-date">
-  	<time datetime="2019-04-30T02:15:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/30/Laravel框架关键技术解析笔记/">Laravel 框架关键技术解析笔记</a>
+    <h1 class="article-title" itemprop="name">
+      Macos 下 PhpStorm + Xdebug 配置
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/05/02/PhpStorm-Xdebug配置/" class="archive-article-date">
+  	<time datetime="2019-05-02T01:17:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、安装 Xdebug 扩展</p>
+<p>Xdebug 可以通过 pecl 和 官网下载两种方式安装。</p>
+<p>1.pecl 安装</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pecl <span class="keyword">install</span> xdebug</span><br></pre></td></tr></table></figure>
+<p>一开始通过 pecl 安装时，在此踩了很久的坑。pecl 安装的是最新版 2.7.1 的，我的 PHP 版本是 7.2，一直配置不成功，后来通过第二种方式把 Xdebug 版本切换成 2.6.0 即可。<br><a id="more"></a></p>
+<p>2.官网下载安装</p>
+<ul>
+<li><p>下载 <a href="(http://xdebug.org/files/xdebug-2.6.0.tgz">xdebug-2.6.0.tgz</a></p>
+</li>
+<li><p><code>tar -xvzf xdebug-2.6.0.tgz</code></p>
+</li>
+<li><p><code>cd xdebug-2.6.0</code></p>
+</li>
+<li><p><code>phpize</code></p>
+</li>
+<li><p><code>./configure</code></p>
+</li>
+<li><p><code>make</code></p>
+</li>
+<li><p><code>cp modules/xdebug.so /usr/local/lib/php/pecl/20170718</code></p>
+</li>
+</ul>
+<p>运行 <code>php -m</code> 查看 Xdebug 扩展是否安装成功</p>
+<p>3.添加 Xdebug 配置</p>
+<p>在 <code>/usr/local/etc/php/7.2/conf.d</code> 内新建文件 <code>ext-xdebug.ini</code>，添加配置信息：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[xdebug]</span><br><span class="line"><span class="attribute">zend_extension</span>=<span class="string">"/usr/local/lib/php/pecl/20170718/xdebug.so"</span></span><br><span class="line">xdebug.<span class="attribute">remote_enable</span>=1</span><br><span class="line">xdebug.<span class="attribute">remote_autostart</span>=1</span><br><span class="line">xdebug.<span class="attribute">remote_port</span>=9001</span><br><span class="line">xdebug.<span class="attribute">remote_host</span>=127.0.0.1</span><br><span class="line">xdebug.<span class="attribute">remote_connect_back</span>=1</span><br><span class="line">xdebug.<span class="attribute">default_enable</span>=1</span><br><span class="line">xdebug.<span class="attribute">idekey</span>=PHPSTORM</span><br></pre></td></tr></table></figure>
+<p>二、配置 Phpstorm</p>
+<p>1.设置 PHP 当前版本，设置 <code>preferences =&gt; Lanuages &amp; Frameworks =&gt; PHP</code></p>
+<p><img src="/images/xdebug0.png" alt="avatar"></p>
+<p>2.设置 <code>preferences =&gt; Lanuages &amp; Frameworks =&gt; PHP =&gt; Debug</code></p>
+<p><img src="/images/xdebug1.png" alt="avatar"></p>
+<p>3.设置 <code>preferences =&gt; Lanuages &amp; Frameworks =&gt; PHP =&gt; Debug =&gt; DBGp Proxy</code></p>
+<p><img src="/images/xdebug2.png" alt="avatar"></p>
+<p>4.设置 <code>Run =&gt; Edit Configurations... =&gt; PHP Web Page</code></p>
+<p><img src="/images/xdebug3.png" alt="avatar"></p>
+<p>5.运行测试</p>
+<p><img src="/images/xdebug4.png" alt="avatar"></p>
+<h3 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h3><ul>
+<li><p><a href="https://medium.com/@hhsadiq/installing-xdebug-with-laravel-valet-on-mac-and-linking-with-phpstorm-9a1c562d1b7d" target="_blank" rel="noopener">https://medium.com/@hhsadiq/installing-xdebug-with-laravel-valet-on-mac-and-linking-with-phpstorm-9a1c562d1b7d</a></p>
+</li>
+<li><p><a href="https://segmentfault.com/a/1190000016153963" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016153963</a></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PhpStorm</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Xdebug</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Laravel</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Macos</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://litten.me/2019/05/02/PhpStorm-Xdebug配置/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/13/Laravel的生命周期/" class="archive-article-date">
-  	<time datetime="2019-04-13T00:59:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/30/Laravel框架关键技术解析笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Laravel 框架关键技术解析笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/13/Laravel的生命周期/">Laravel 的生命周期</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Laravel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -274,9 +367,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
